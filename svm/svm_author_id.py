@@ -27,11 +27,11 @@ features_train, features_test, labels_train, labels_test = preprocess()
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 
-clf = SVC(kernel='linear')
+clf = SVC(kernel='rbf',C=10000.0)
 
-
-features_train = features_train[:len(features_train)/100] 
-labels_train = labels_train[:len(labels_train)/100] 
+## limite the size of dataset to trainning purp0ses 
+# features_train = features_train[:len(features_train)/100] 
+# labels_train = labels_train[:len(labels_train)/100] 
 
 t0 = time()
 
@@ -40,6 +40,26 @@ clf.fit(features_train,labels_train)
 print "training time:", round((time()-t0)/60,3),"s"
 
 print clf.score(features_test,labels_test)
+
+print "element 10:"
+print clf.predict(features_test[10])
+print "element 26:"
+print clf.predict(features_test[26])
+print "element 50:"
+print clf.predict(features_test[50])
+
+i = 0
+cris = 0
+for x in features_test:
+	if clf.predict(features_test[i]) == 1:
+		cris=cris+1
+		i=i+1
+	else:
+		i=i+1
+
+
+print "Chris mail list :"
+print cris
 
 #########################################################
 
