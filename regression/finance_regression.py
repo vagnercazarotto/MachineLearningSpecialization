@@ -69,6 +69,7 @@ plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 reg.fit(feature_test, target_test)
 plt.plot(feature_train, reg.predict(feature_train), color="b")
 
+print "final Slope: " + str(reg.coef_)
 # draw the regression line, once it's coded
 try:
     plt.plot(feature_test, reg.predict(feature_test))
@@ -81,4 +82,4 @@ plt.show()
 
 
 
-print "final Slope: " + str(reg.coef_)
+
