@@ -65,7 +65,7 @@ plt.show()
 # for the data and store them to a list called pred
 
 from sklearn.cluster import KMeans
-features_list = ['poi',feature_1,feature_2,feature_3]
+features_list = ['poi',feature_1,feature_2]
 data2 = featureFormat(data_dict,features_list)
 poi,finance_features = targetFeatureSplit(data2)
 clf = KMeans(n_clusters=2)
