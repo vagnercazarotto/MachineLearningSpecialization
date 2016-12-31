@@ -7,13 +7,57 @@ sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 
 
-### read in data dictionary, convert to numpy array
-data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+# read in data dictionary, convert to numpy array
+data_dict = pickle.load(
+    open("../final_project/final_project_dataset.pkl", "r"))
 features = ["salary", "bonus"]
 data = featureFormat(data_dict, features)
 
 
-### your code below
+outiliers = []
+for key in data_dict:
+    val = data_dict[key]['salary']
+    if val == 'NaN':
+        continue
 
+    outiliers.append((key, int(val)))
+
+
+outiliersFinal = (sorted(outiliers, key=lambda x: x[1], reverse=True)[1:2])
+
+
+print outiliersFinal[0][0]
+
+# your code below
+for point in data:
+    salary = point[0]
+    bonus = point[1]
+    matplotlib.pyplot.scatter(salary, bonus)
+
+
+matplotlib.pyplot.xlabel("salary")
+matplotlib.pyplot.ylabel("bonus")
+matplotlib.pyplot.show()
+
+
+
+#remove the outlier and plot the graph again
+
+#data_dict.pop(outiliersFinal[0][0],0)     ## we don't need to remove the biggest outlier
+#removes the data point "TOTAL"
+data_dict.pop('TOTAL',0)
+
+newData = featureFormat(data_dict, features)
+
+# your code below
+for point in newData:
+    salary = point[0]
+    bonus = point[1]
+    matplotlib.pyplot.scatter(salary, bonus)
+
+
+matplotlib.pyplot.xlabel("salary")
+matplotlib.pyplot.ylabel("bonus")
+matplotlib.pyplot.show()
 
 
