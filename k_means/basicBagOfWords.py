@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 vectorizer = CountVectorizer()
 
-string1 = "hi katie the self driving car will be be be late Best Sebastian"
+string1 = "hi katie the self driving car will be late Best Sebastian"
 string2 = "hi Sebastian the machine learning class will be great great Best Katie"
 string3 = "hi katie the machine learning class will be most excellent"
 
