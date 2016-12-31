@@ -27,10 +27,10 @@ ages_train, ages_test, net_worths_train, net_worths_test = train_test_split(
 # the plotting code below works, and you can see what your regression
 # looks like
 reg = linear_model.LinearRegression()
-reg.fit(ages_train,net_worths_train)
+reg.fit(ages_train, net_worths_train)
 
 print "Slope: " + str(reg.coef_)
-print "Score: " + str(reg.score(ages_test,net_worths_test))
+print "Score: " + str(reg.score(ages_test, net_worths_test))
 
 
 try:
@@ -57,14 +57,12 @@ if len(cleaned_data) > 0:
     ages = numpy.reshape(numpy.array(ages), (len(ages), 1))
     net_worths = numpy.reshape(numpy.array(net_worths), (len(net_worths), 1))
 
-    print "Slope: " + str(reg.coef_)
-    print "Score: " + str(reg.score(ages_test,net_worths_test))
-
-    
     # refit your cleaned data!
     try:
         reg.fit(ages, net_worths)
         plt.plot(ages, reg.predict(ages), color="blue")
+        print "Slope: " + str(reg.coef_)
+        print "Score: " + str(reg.score(ages_test, net_worths_test))
     except NameError:
         print "you don't seem to have regression imported/created,"
         print "   or else your regression object isn't named reg"
