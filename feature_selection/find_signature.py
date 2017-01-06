@@ -45,4 +45,15 @@ classifier =  tree.DecisionTreeClassifier()
 classifier.fit(features_train,labels_train)
 
 
-print str(classifier.score(features_test,labels_test))
+print  "Acuracy for this script with overfit: " + str(classifier.score(features_test,labels_test))
+
+
+importance = classifier.feature_importances_
+
+# only show the features it they are bigger than zero
+# because we have a big list of features in text processing
+for i, f in enumerate(importance):
+	if f > 0.2:
+		print i
+		print f
+		print vectorizer.get_feature_names()[i]
