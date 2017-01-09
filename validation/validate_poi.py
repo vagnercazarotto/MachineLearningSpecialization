@@ -15,6 +15,7 @@ import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
 
 data_dict = pickle.load(
     open("../final_project/final_project_dataset.pkl", "r"))
@@ -31,4 +32,10 @@ labels, features = targetFeatureSplit(data)
 # it's all yours from here forward!
 clf = DecisionTreeClassifier()		
 clf.fit(features,labels)
-print str(clf.score(features,labels))
+print  "Overfited classifier: " + str(clf.score(features,labels))
+
+features_train,features_test,labels_train,labels_test = train_test_split(features,labels,test_size=0.3,random_state=42)
+
+clf.fit(features_train,labels_train)
+
+print "Good Classifier: " + str(clf.score(features_test,labels_test))
