@@ -16,6 +16,7 @@ sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 data_dict = pickle.load(
     open("../final_project/final_project_dataset.pkl", "r"))
@@ -39,3 +40,14 @@ features_train,features_test,labels_train,labels_test = train_test_split(feature
 clf.fit(features_train,labels_train)
 
 print "Good Classifier: " + str(clf.score(features_test,labels_test))
+
+print "POI in test set: "
+print "POI predicted: "
+print clf.predict(features_test)
+print "Real POI: "
+print np.array(labels_test)
+
+
+print "len of POI in test set: " + str(len([e for e in labels_test if e == 1.0]))
+
+print "total len of the test set: " + str(len(labels_test))
