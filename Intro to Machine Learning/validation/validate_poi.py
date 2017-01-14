@@ -54,4 +54,4 @@ print "total len of the test set: " + str(len(labels_test))
 
 print "Precision Score: " + str(precision_score(np.array(labels_test),clf.predict(features_test)))
 
-print "Recall Score: " + str(recall_score(np.array(labels_test),clf.predict(features_test)))
+print "Recall Score: " + str(recall_score(np.array(labels_test),clf.predict(features_test)	))
