@@ -46,7 +46,9 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
-
+# this file is too git to share on github, link above:
+# https://www.udacity.com/api/nodes/5430778793/supplemental_media/daily-engagement-fullcsv/download
+daily_engagement_full.csv
 # Translations
 *.mo
 *.pot
