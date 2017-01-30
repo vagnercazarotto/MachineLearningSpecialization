@@ -95,9 +95,11 @@ ENV/
 
 # I will ignore CSV files, because we can't upload large files in github
 # but, I'll share a link for each file that you will need
-.csv
+*.csv
 
 # I'll also ignore .zip .xml and bz2 files
-.zip
-.xml
-.bz2
+*.zip
+*.xml
+*.bz2
+*.ods
+*.xls
