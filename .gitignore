@@ -92,3 +92,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# I will ignore CSV files, because we can't upload large files in github
+# but, I'll share a link for each file that you will need
+.csv
