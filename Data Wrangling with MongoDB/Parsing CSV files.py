@@ -8,6 +8,8 @@
 # You have to parse only the first 10 data lines in this exercise,
 # so the returned list should have 10 entries!
 import os
+import csv
+import pprint
 
 DATADIR = "/Users/vagnercazarotto/Documents/machineLearning/MachineLearningSpecialization/Data Wrangling with MongoDB/data"
 DATAFILE = "beatles-diskography.csv"
@@ -15,7 +17,7 @@ DATAFILE = "beatles-diskography.csv"
 
 def parse_file(datafile):
     data = []
-    with open(datafile, "r") as f:
+    with open(datafile, "rU") as f:
         header = f.readline().split(",")
         # first read the head of the file and split, so we can get values to
         # use as Keys
@@ -40,10 +42,29 @@ def parse_file(datafile):
 
     return data
 
+
+## ok Now parse data with CSV module
+
+#In a Python with universal newline support open() the mode parameter can also be "U", 
+# meaning "open for input as a text file with universal newline interpretation". 
+# Mode "rU" is also allowed, for symmetry with "rb"
+def parse_csv(datafile):
+    data = []
+    n = 0
+    with open(datafile,'rU') as csvReader:
+        reader = csv.DictReader(csvReader)
+        for line in reader:
+            data.append(line)
+    return data
+
+
+
 def test():
     # a simple test of your implemetation
     datafile = os.path.join(DATADIR, DATAFILE)
-    d = parse_file(datafile)
+    d = parse_csv(datafile)
+    # d = parse_file(datafile)
+    print d
     firstline = {'Title': 'Please Please Me', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)', 'Released': '22 March 1963', 'US Chart Position': '-', 'RIAA Certification': 'Platinum', 'BPI Certification': 'Gold'}
     tenthline = {'Title': '', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)', 'Released': '10 July 1964', 'US Chart Position': '-', 'RIAA Certification': '', 'BPI Certification': 'Gold'}
 
