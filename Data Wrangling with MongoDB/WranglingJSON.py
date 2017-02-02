@@ -31,7 +31,7 @@ API_KEY = { "popular": "",
 
 
 def get_from_file(kind, period):
-    filename = "popular-{0}-{1}.json".format(kind, period)
+    filename = "./dpopular-{0}-{1}.json".format(kind, period)
     with open(filename, "r") as f:
         return json.loads(f.read())
 
