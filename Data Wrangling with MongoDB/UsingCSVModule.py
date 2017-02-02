@@ -33,7 +33,7 @@ def parse_file(datafile):
         csvFile.next() # Skipe HEAD
         data = [ row for row in csvFile]
 
-    print data[2][5]
+    print name
     # Do not change the line below
     return (name, data)
 
