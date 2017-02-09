@@ -9,16 +9,19 @@
 import xml.etree.ElementTree as ET
 PATENTS = 'data/patent.data'
 
+
 def get_root(fname):
     tree = ET.parse(fname)
     return tree.getroot()
 
-## build a generator for outfiles
+# build a generator for outfiles
+
+
 def outfileGenerator(filename):
     n = -1
     while True:
         n += 1
-        yield open('{0}-{1}'.format(filename,n),'w')
+        yield open('{0}-{1}'.format(filename, n), 'w')
 
 
 def split_file(filename):
@@ -26,15 +29,15 @@ def split_file(filename):
     Split the input file into separate files, each containing a single patent.
     As a hint - each patent declaration starts with the same line that was
     causing the error found in the previous exercises.
-    
+
     The new files should be saved with filename in the following format:
     "{}-{}".format(filename, n) where n is a counter, starting from 0.
     """
 
-    # ok, the patter we are loking for is 
+    # ok, the patter we are loking for is
     pattern = '<?xml'
 
-    ## a Iterator for file Names
+    # a Iterator for file Names
     OutFileIterator = outfileGenerator(filename)
 
     with open(filename) as infile:
@@ -44,11 +47,8 @@ def split_file(filename):
             if pattern in line:
                 outfile = next(OutFileIterator)
 
-            ## write the line
+            # write the line
             outfile.write(line)
-
-
-
 
     pass
 
