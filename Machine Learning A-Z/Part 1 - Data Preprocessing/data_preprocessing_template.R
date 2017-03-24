@@ -3,8 +3,14 @@
 # Importing the dataset
 dataset = read.csv('Data.csv')
 
+#Taking care of missing data in R
+dataset$Age = ifelse(is.na(dataset$Age),ave(dataset$Age,
+                     FUN = function(x) mean(x,na.rm = TRUE)),
+                     dataset$Age)
+
 # Splitting the dataset into the Training set and Test set
 # install.packages('caTools')
+"""
 library(caTools)
 set.seed(123)
 split = sample.split(dataset$DependentVariable, SplitRatio = 0.8)
