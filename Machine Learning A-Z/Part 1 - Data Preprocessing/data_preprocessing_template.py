@@ -26,6 +26,10 @@ X[:,0] = labelencoder_X.fit_transform(X[:,0])
 onehotencoder = OneHotEncoder(categorical_features= [0])
 X = onehotencoder.fit_transform(X).toarray()
 
+## let's take care of the second variable which is purchase one
+labelencoder_Y = LabelEncoder()
+y = labelencoder_Y.fit_transform(y)
+
 
 
 
