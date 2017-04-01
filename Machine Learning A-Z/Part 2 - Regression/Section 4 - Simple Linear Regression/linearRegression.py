@@ -30,3 +30,17 @@ y_train = sc_y.fit_transform(y_train)"""
 
 ## end of preprocessing 
 
+## Fitting simple linear regression to the trainning set
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train,y_train)
+
+# Predicting the Test set results
+y_pred = regressor.predict(X_test)
+
+## Visualising the Trainning set results
+plt.scatter(X_train,y_train, color = 'red')
+plt.plot(X_train, regressor.predict(X_train), color= 'blue')
+plt.title('Salary vs Experience (Training set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
