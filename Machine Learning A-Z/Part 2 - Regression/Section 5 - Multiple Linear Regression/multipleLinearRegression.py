@@ -46,3 +46,37 @@ y_train = sc_y.fit_transform(y_train)"""
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train,y_train)
+
+
+## Predicting the Test set results
+y_pred = regressor.predict(X_test)
+
+
+## Building the optimal model using Backward Elimination
+import statsmodels.formula.api as sm
+## in this library we need to add a columns of ones to be able to use Backward Elimination
+X = np.append(arr = np.ones((50,1)).astype(int) , values = X , axis = 1)
+
+### Starting Backward Elimination
+#1) Create a new matriz of features 
+X_optimal = X[:, [0,1,2,3,4]] ## Start with all the independent variables
+regressor_OLS = sm.OLS(endog=y , exog=X_optimal).fit() 
+## Fit the full model with all possibles predictios
+### Condiser the predictor with the highest P-value. If P > SL remove the predictor 
+# otherwise finish the model
+regressor_OLS.summary()  ## get information about the model
+
+## IF P>|t| is bigger than Sl = 0.05 it should be removed one by one
+##
+
+X_optimal = X[:, [0,1,2,4]] ## Start with all the independent variables
+regressor_OLS = sm.OLS(endog=y , exog=X_optimal).fit() 
+regressor_OLS.summary()  ## get information about the model
+
+X_optimal = X[:, [0,2,4]] ## Start with all the independent variables
+regressor_OLS = sm.OLS(endog=y , exog=X_optimal).fit() 
+regressor_OLS.summary()  ## get information about the model
+
+X_optimal = X[:, [0,2]] ## Start with all the independent variables
+regressor_OLS = sm.OLS(endog=y , exog=X_optimal).fit() 
+regressor_OLS.summary()  ## get information about the model
