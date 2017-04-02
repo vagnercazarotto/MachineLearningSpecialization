@@ -21,3 +21,16 @@ test_set = subset(dataset, split == FALSE)
 # Feature Scaling
 # training_set = scale(training_set)
 # test_set = scale(test_set)
+
+
+## Fitting Multiple Linear Regression to the Training set
+## dot represent all the linear combinations
+regressor = lm(formula = Profit ~ .,
+               data = training_set) 
+
+# get information about our regressor
+summary(regressor)
+
+
+## Predict the Test set Results
+y_pred = predict(regressor , newdata = test_set)
