@@ -49,8 +49,10 @@ plt.show()
 
 
 ## visualising the Polynomial Regression results
+X_grid = np.arange(min(X),max(X),0.1)
+X_grid = X_grid.reshape((len(X_grid),1))
 plt.scatter(X,y,color= 'red')
-plt.plot(X,lin_reg_2.predict(poly_reg.transform(X)),color= 'blue')
+plt.plot(X_grid,lin_reg_2.predict(poly_reg.transform(X_grid)),color= 'blue')
 plt.title('Trug of Bluff (Polynomial Regression)')
 plt.xlabel('Position Level')
 plt.ylabel('Salary')
