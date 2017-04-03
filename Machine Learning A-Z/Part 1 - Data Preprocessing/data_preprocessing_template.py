@@ -57,3 +57,10 @@ plt.title('Trug of Bluff (Polynomial Regression)')
 plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
+
+
+## predicting a new resuklt with Linear regression
+lin_reg.predict(6.5)
+
+## Predicting a new result with Polynomial Regression
+lin_reg_2.predict(poly_reg.fit_transform(6.5))
