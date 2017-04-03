@@ -34,7 +34,7 @@ lin_reg.fit(X,y)
 from sklearn.preprocessing import PolynomialFeatures
 ## PolyFeatures will transform the linear matrix to another matrix 
 ## with polymons 
-poly_reg = PolynomialFeatures(degree=2)
+poly_reg = PolynomialFeatures(degree=3) ### You can add degres of freddom to best fit the model
 X_poly = poly_reg.fit_transform(X)
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(X_poly,y)
@@ -43,6 +43,15 @@ lin_reg_2.fit(X_poly,y)
 plt.scatter(X,y,color= 'red')
 plt.plot(X,lin_reg.predict(X),color= 'blue')
 plt.title('Trug of Bluff (Linear Regression)')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+
+
+## visualising the Polynomial Regression results
+plt.scatter(X,y,color= 'red')
+plt.plot(X,lin_reg_2.predict(poly_reg.transform(X)),color= 'blue')
+plt.title('Trug of Bluff (Polynomial Regression)')
 plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
