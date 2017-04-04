@@ -28,3 +28,28 @@ poly_reg = lm(formula = Salary ~ .,
               data = dataset)
 
 summary(poly_reg)
+
+
+## Visualising the Linearn Regression results
+#install.packages('ggplot2')
+library(ggplot2)
+ggplot() +
+  geom_point(aes(x= dataset$Level , y= dataset$Salary),
+             color = 'red') +
+  geom_line(aes(x=dataset$Level , y = predict(lin_reg, newdata = dataset)),
+            color = 'blue') +
+  ggtitle('Truth or Bluf (Linear Regression)') +
+  xlab('Level') +
+  ylab('Salary')
+
+## Visualising the Polynomial Regression results
+#install.packages('ggplot2')
+library(ggplot2)
+ggplot() +
+  geom_point(aes(x= dataset$Level , y= dataset$Salary),
+             color = 'red') +
+  geom_line(aes(x=dataset$Level , y = predict(poly_reg, newdata = dataset)),
+            color = 'blue') +
+  ggtitle('Truth or Bluf (Linear Regression)') +
+  xlab('Level') +
+  ylab('Salary')
