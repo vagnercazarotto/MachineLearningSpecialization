@@ -24,6 +24,9 @@ summary(lin_reg)
 
 ## Fitting Polynomial Regression to the dataset
 dataset$Level2 = dataset$Level^2 ## Add a polynomial term
+dataset$Level3 = dataset$Level^3
+dataset$Level4 = dataset$Level^4
+dataset$Level5 = dataset$Level^5
 poly_reg = lm(formula = Salary ~ .,
               data = dataset)
 
