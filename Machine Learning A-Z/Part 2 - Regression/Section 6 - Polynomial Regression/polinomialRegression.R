@@ -15,3 +15,16 @@ dataset = dataset[2:3]
 # Feature Scaling
 # training_set = scale(training_set)
 # test_set = scale(test_set)
+
+## Fitting Linear Regression to the dataset
+lin_reg = lm(formula = Salary ~ .,
+             data = dataset) 
+
+summary(lin_reg)
+
+## Fitting Polynomial Regression to the dataset
+dataset$Level2 = dataset$Level^2 ## Add a polynomial term
+poly_reg = lm(formula = Salary ~ .,
+              data = dataset)
+
+summary(poly_reg)
