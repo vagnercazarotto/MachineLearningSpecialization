@@ -17,7 +17,11 @@ dataset = dataset[2:3]
 # test_set = scale(test_set)
 
 # Fitting the Regression Model to the dataset
-# Create your regressor here
+#install.packages('e1071')
+library(e1071)
+regressor = svm(formula = Salary ~ .,
+                data = dataset,
+                type = 'eps-regression') 
 
 # Predicting a new result
 y_pred = predict(regressor, data.frame(Level = 6.5))
@@ -30,11 +34,11 @@ ggplot() +
              colour = 'red') +
   geom_line(aes(x = dataset$Level, y = predict(regressor, newdata = dataset)),
             colour = 'blue') +
-  ggtitle('Truth or Bluff (Regression Model)') +
+  ggtitle('Truth or Bluff (SVR Model)') +
   xlab('Level') +
   ylab('Salary')
 
-# Visualising the Regression Model results (for higher resolution and smoother curve)
+# Visualising the SVR Model results (for higher resolution and smoother curve)
 # install.packages('ggplot2')
 library(ggplot2)
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.1)
