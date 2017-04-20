@@ -1,0 +1,33 @@
+# Log started 2017-04-14 10:15
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open \
+  "/Users/vagnercazarotto/Documents/machineLearning/MachineLearningSpecialization/Data Science Training/CAP Curve.gdt"
+rename 16 Spain
+rename 17 Germany
+summary Gender
+dummify Gender
+rename 18 Female
+rename 19 Male
+# store \
+  "/Users/vagnercazarotto/Documents/machineLearning/MachineLearningSpecialization/Data Science Training/CAP Curve.gdt" \
+  --gzipped
+Log_Balance = log10(Balance +1)
+# model 1
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
+# store \
+  "/Users/vagnercazarotto/Documents/machineLearning/MachineLearningSpecialization/Data Science Training/CAP Curve.gdt" \
+  --gzipped
+# model 2
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
+fcast 1 10000 --static
+# model 2
+fcast 1 10000 P_Hat
+# store \
+  "/Users/vagnercazarotto/Documents/machineLearning/MachineLearningSpecialization/Data Science Training/Chum Modeling Forecast.csv" \
+   RowNumber Exited P_Hat --csv
+# model 3
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance
