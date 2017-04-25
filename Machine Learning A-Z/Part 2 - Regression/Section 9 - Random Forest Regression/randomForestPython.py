@@ -33,7 +33,10 @@ y_train = sc_y.fit_transform(y_train)"""
 
 # Fitting the Regression Model to the dataset
 # Create your regressor here
+from sklearn.ensemble import RandomForestRegressor
 
+regressor = RandomForestRegressor(n_estimators=300,criterion='mse',random_state=0)
+regressor.fit(X,y)
 
 
 
