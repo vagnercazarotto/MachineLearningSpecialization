@@ -14,10 +14,9 @@ Created on Sun Jun 10 23:53:40 2018
 
 p=[0.2,0.2,0.2,0.2,0.2]
 world=['green', 'red', 'red', 'green', 'green']
-Z = 'green'
+measurements = ['red','green']
 pHit = 0.6
 pMiss = 0.2
-
 
 
 
@@ -32,4 +31,7 @@ def sense(p, Z):
         q[i]=q[i]/s 
     return q
 
-print(sense(p,Z))
+for k in range(len(measurements)):
+    p = sense(p,measurements[k])
+
+print(p)
