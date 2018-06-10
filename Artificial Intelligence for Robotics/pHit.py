@@ -14,7 +14,7 @@ Created on Sun Jun 10 23:53:40 2018
 
 p=[0.2,0.2,0.2,0.2,0.2]
 world=['green', 'red', 'red', 'green', 'green']
-Z = 'red'
+Z = 'green'
 pHit = 0.6
 pMiss = 0.2
 
@@ -27,6 +27,9 @@ def sense(p, Z):
         hit = (Z == world[i])
         print(hit)
         q.append(p[i] * (hit * pHit + (1-hit) * pMiss))
+    s = sum(q)
+    for i in range(len(p)):
+        q[i]=q[i]/s 
     return q
 
 print(sense(p,Z))
